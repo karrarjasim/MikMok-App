@@ -1,4 +1,4 @@
-package com.example.mikmok.models
+package com.example.mikmok.data.models
 
 data class MediaFeed(
     val backgrounds: List<String>,
