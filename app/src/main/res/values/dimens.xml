@@ -2,7 +2,7 @@
 <resources>
 
     <dimen name="margin_larg">16dp</dimen>
-    <dimen name="size_larg">18sp</dimen>
+    <dimen name="size_larg">16sp</dimen>
     <dimen name="padding_small">8dp</dimen>
     <dimen name="size_medum">14sp</dimen>
     <dimen name="padding_more_small">4dp</dimen>
