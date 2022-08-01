@@ -14,6 +14,7 @@ import java.io.IOException
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityMainBinding
+    lateinit var adapter: VideoAdapter
     private val client = OkHttpClient()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +41,10 @@ class MainActivity : AppCompatActivity() {
                     val result = Gson().fromJson(jsonString, MediaFeed::class.java)
                     Log.v(TAG, result.toString())
                     runOnUiThread {
-
+                        binding.apply {
+                            adapter = VideoAdapter(result.feed.first().items)
+                            recyclerHome.adapter = adapter
+                        }
                     }
                 }
             }
