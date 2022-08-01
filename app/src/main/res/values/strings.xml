@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MikMok</string>
+    <string name="label_description">Frankenstein, a young medical student, trying to create the perfect human being, instead creates a misshapen monster.</string>
+    <string name="label_director">J. Searle Dawley</string>
+    <string name="title">Frankenstein</string>
+    <string name="label_faverot">7</string>
 </resources>
