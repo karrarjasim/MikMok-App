@@ -34,7 +34,6 @@ class VideoAdapter (
 
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
         val currentVideo=videoList[position]
-
         holder.binding.apply {
            setupPlayer(currentVideo.url)
             bindVideoView(currentVideo)
@@ -55,6 +54,7 @@ class VideoAdapter (
         player.addListener(object :Player.Listener{
             // handle loading
             override fun onPlaybackStateChanged(state: Int) {
+
                 when (state) {
                     Player.STATE_BUFFERING -> {
                         progressBar.visibility = View.VISIBLE
@@ -66,7 +66,7 @@ class VideoAdapter (
                 }
             }
         })
-        player.addMediaItems(listOf(MediaItem.fromUri(Uri.parse(url))))
+        player.addMediaItem(MediaItem.fromUri(url))
         player.prepare()
         player.play()
     }
