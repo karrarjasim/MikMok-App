@@ -17,5 +17,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lav_pause_resume_video"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:visibility="invisible"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="false"
+        app:layout_constraintTop_toTopOf="@id/recycler_home"
+        app:layout_constraintBottom_toBottomOf="@id/recycler_home"
+        app:layout_constraintStart_toStartOf="@id/recycler_home"
+        app:layout_constraintEnd_toEndOf="@id/recycler_home"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
