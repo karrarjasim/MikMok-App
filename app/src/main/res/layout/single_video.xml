@@ -135,7 +135,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginEnd="@dimen/margin_larg"
-        android:background="@drawable/ic_baseline_favorite_24"
+        android:background="@drawable/ic_baseline_favorite_white"
         android:elevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/title" />
@@ -160,10 +160,12 @@
         android:layout_height="40dp"
         android:layout_marginTop="@dimen/margin_larg"
         android:elevation="4dp"
-        android:src="@drawable/share_icon"
+        android:rotationY="180"
+        android:src="@drawable/ic_arrow"
         app:layout_constraintEnd_toEndOf="@+id/heart_icon"
         app:layout_constraintStart_toStartOf="@+id/heart_icon"
-        app:layout_constraintTop_toBottomOf="@+id/label_faverot" />
+        app:layout_constraintTop_toBottomOf="@+id/label_faverot"
+        app:tint="@color/white" />
 
     <TextView
         android:id="@+id/label_share"

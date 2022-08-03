@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.mikmok.R
 import com.example.mikmok.data.models.VideoModel
 import com.example.mikmok.databinding.SingleVideoBinding
 import com.example.mikmok.util.OnIconsClickListener
@@ -20,7 +21,7 @@ class VideoAdapter(
     private val videoList: List<VideoModel>,
     private val onVideoClickListener : OnVideoClickListener,
     private  val onIconsClickListener: OnIconsClickListener,
-
+    private var isFav: Boolean = false
     ) : RecyclerView.Adapter<VideoAdapter.VideoViewHolder>() {
 
     inner class VideoViewHolder(val binding: SingleVideoBinding) : RecyclerView.ViewHolder(binding.root)
@@ -46,7 +47,17 @@ class VideoAdapter(
         labelYear.text = currentVideo.year.toString()
         Glide.with(root).load(currentVideo.art).into(image)
         shareIcon.setOnClickListener{onIconsClickListener.onClickShareIcon(currentVideo.url)}
+        heartIcon.setOnClickListener {fav ->
+            if (!isFav){
+         fav.setBackgroundResource(R.drawable.ic_baseline_favorite_red)
+            isFav = true
+        }
+        else{
+            fav.setBackgroundResource(R.drawable.ic_baseline_favorite_white)
+            isFav = false
+        } }
     }
+
 
     private fun SingleVideoBinding.setupPlayer(url: String) {
         Builder(root.context).build().run {
@@ -92,6 +103,8 @@ class VideoAdapter(
         super.onViewDetachedFromWindow(holder)
         holder.binding.videoView.player?.pause()
     }
+
+
 
     companion object {
         const val TAG = "VIDEO_ADAPTER_LOG_TAG"
