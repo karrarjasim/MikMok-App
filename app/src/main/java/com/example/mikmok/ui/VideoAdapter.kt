@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.mikmok.data.models.VideoModel
 import com.example.mikmok.databinding.SingleVideoBinding
+import com.example.mikmok.util.OnIconsClickListener
 import com.example.mikmok.util.OnVideoClickListener
 import com.google.android.exoplayer2.ExoPlayer.Builder
 import com.google.android.exoplayer2.MediaItem
@@ -17,7 +18,9 @@ import com.google.android.exoplayer2.Player
 
 class VideoAdapter(
     private val videoList: List<VideoModel>,
-    private val onVideoClickListener : OnVideoClickListener
+    private val onVideoClickListener : OnVideoClickListener,
+    private  val onIconsClickListener: OnIconsClickListener,
+
     ) : RecyclerView.Adapter<VideoAdapter.VideoViewHolder>() {
 
     inner class VideoViewHolder(val binding: SingleVideoBinding) : RecyclerView.ViewHolder(binding.root)
@@ -42,6 +45,7 @@ class VideoAdapter(
         labelDirector.text = currentVideo.director
         labelYear.text = currentVideo.year.toString()
         Glide.with(root).load(currentVideo.art).into(image)
+        shareIcon.setOnClickListener{onIconsClickListener.onClickShareIcon(currentVideo.url)}
     }
 
     private fun SingleVideoBinding.setupPlayer(url: String) {

@@ -1,6 +1,7 @@
 package com.example.mikmok.ui
 
 import android.animation.Animator
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -12,13 +13,14 @@ import com.example.mikmok.data.models.MediaFeed
 import com.example.mikmok.data.models.VideoState
 import com.example.mikmok.databinding.ActivityMainBinding
 import com.example.mikmok.util.Constants
+import com.example.mikmok.util.OnIconsClickListener
 import com.example.mikmok.util.OnVideoClickListener
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.gson.Gson
 import okhttp3.*
 import java.io.IOException
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),OnIconsClickListener{
 
     private lateinit var binding: ActivityMainBinding
     lateinit var videoAdapter: VideoAdapter
@@ -116,7 +118,9 @@ class MainActivity : AppCompatActivity() {
                                 }
                                         }
                                     }
-                            })
+                            },
+                            this@MainActivity
+                        )
                             recyclerHome.run {
                                 adapter = videoAdapter
                                 registerOnPageChangeCallback(object :
@@ -136,5 +140,16 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         const val TAG = "MAIN_ACTIVITY_LOG_TAG"
+    }
+
+    override fun onClickShareIcon(url: String) {
+        val sendIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, url)
+            type="text/plain"
+        }
+        val shareIntent = Intent.createChooser(sendIntent,  "Share URL")
+        startActivity(shareIntent)
+
     }
 }
