@@ -58,7 +58,7 @@ private fun SingleVideoBinding.setFavIcon(){
             isFav = true
         }
         else{
-            fav.setBackgroundResource(R.drawable.ic_baseline_favorite_white)
+            fav.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24)
             isFav = false
         } }
 }
