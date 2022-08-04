@@ -37,6 +37,7 @@ class VideoAdapter(
         holder.binding.apply {
             setupPlayer(videoList[position].url)
             bindVideoView(videoList[position])
+
         }
     }
 
@@ -47,17 +48,20 @@ class VideoAdapter(
         labelYear.text = currentVideo.year.toString()
         Glide.with(root).load(currentVideo.art).into(image)
         shareIcon.setOnClickListener{onIconsClickListener.onClickShareIcon(currentVideo.url)}
-        heartIcon.setOnClickListener {fav ->
-            if (!isFav){
-         fav.setBackgroundResource(R.drawable.ic_baseline_favorite_red)
+        setFavIcon()
+
+    }
+private fun SingleVideoBinding.setFavIcon(){
+    heartIcon.setOnClickListener {fav ->
+        if (!isFav){
+            fav.setBackgroundResource(R.drawable.ic_baseline_favorite_red)
             isFav = true
         }
         else{
             fav.setBackgroundResource(R.drawable.ic_baseline_favorite_white)
             isFav = false
         } }
-    }
-
+}
 
     private fun SingleVideoBinding.setupPlayer(url: String) {
         Builder(root.context).build().run {
