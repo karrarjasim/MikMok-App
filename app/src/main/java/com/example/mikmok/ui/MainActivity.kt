@@ -13,14 +13,14 @@ import com.example.mikmok.data.models.MediaFeed
 import com.example.mikmok.data.models.VideoState
 import com.example.mikmok.databinding.ActivityMainBinding
 import com.example.mikmok.util.Constants
-import com.example.mikmok.util.OnIconsClickListener
-import com.example.mikmok.util.OnVideoClickListener
+import com.example.mikmok.interfaces.OnIconsClickListener
+import com.example.mikmok.interfaces.OnVideoClickListener
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.gson.Gson
 import okhttp3.*
 import java.io.IOException
 
-class MainActivity : AppCompatActivity(),OnIconsClickListener,Animator.AnimatorListener {
+class MainActivity : AppCompatActivity(), OnIconsClickListener,Animator.AnimatorListener {
 
     private lateinit var binding: ActivityMainBinding
     lateinit var videoAdapter: VideoAdapter
@@ -68,8 +68,8 @@ class MainActivity : AppCompatActivity(),OnIconsClickListener,Animator.AnimatorL
                                     }
                             },
                             this@MainActivity
-                        )
-                            recyclerHome.run {
+                            )
+                            viewpagerHome.run {
                                 adapter = videoAdapter
                                 registerOnPageChangeCallback(object :
                                     ViewPager2.OnPageChangeCallback() {
@@ -105,9 +105,6 @@ class MainActivity : AppCompatActivity(),OnIconsClickListener,Animator.AnimatorL
         }
     }
 
-    companion object {
-        const val TAG = "MAIN_ACTIVITY_LOG_TAG"
-    }
 
     override fun onClickShareIcon(url: String) {
         val sendIntent: Intent = Intent().apply {
@@ -135,5 +132,9 @@ class MainActivity : AppCompatActivity(),OnIconsClickListener,Animator.AnimatorL
     override fun onAnimationRepeat(animation: Animator?) {
         binding.lavPauseResumeVideo.isVisible=false
 
+    }
+
+    companion object {
+        const val TAG = "MAIN_ACTIVITY_LOG_TAG"
     }
 }

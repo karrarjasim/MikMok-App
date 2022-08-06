@@ -10,8 +10,8 @@ import com.bumptech.glide.Glide
 import com.example.mikmok.R
 import com.example.mikmok.data.models.VideoModel
 import com.example.mikmok.databinding.SingleVideoBinding
-import com.example.mikmok.util.OnIconsClickListener
-import com.example.mikmok.util.OnVideoClickListener
+import com.example.mikmok.interfaces.OnIconsClickListener
+import com.example.mikmok.interfaces.OnVideoClickListener
 import com.google.android.exoplayer2.ExoPlayer.Builder
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.PlaybackException
@@ -20,9 +20,11 @@ import com.google.android.exoplayer2.Player
 class VideoAdapter(
     private val videoList: List<VideoModel>,
     private val onVideoClickListener : OnVideoClickListener,
-    private  val onIconsClickListener: OnIconsClickListener,
-    private var isFav: Boolean = false
+    private  val onIconsClickListener: OnIconsClickListener
     ) : RecyclerView.Adapter<VideoAdapter.VideoViewHolder>() {
+
+    private var isFav: Boolean = false
+    private var likes : Int = 0
 
     inner class VideoViewHolder(val binding: SingleVideoBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -43,6 +45,7 @@ class VideoAdapter(
 
     private fun SingleVideoBinding.bindVideoView(currentVideo: VideoModel) {
         title.text = currentVideo.title
+        likesLabel.text = (likes).toString();
         labelDescription.text = currentVideo.description
         labelDirector.text = currentVideo.director
         labelYear.text = currentVideo.year.toString()
@@ -56,10 +59,14 @@ private fun SingleVideoBinding.setFavIcon(){
         if (!isFav){
             fav.setBackgroundResource(R.drawable.ic_baseline_favorite_red)
             isFav = true
+            likes ++
+            likesLabel.text = (likes).toString()
         }
         else{
             fav.setBackgroundResource(R.drawable.ic_baseline_favorite_border_24)
             isFav = false
+            likes --
+            likesLabel.text = (likes).toString()
         } }
 }
 

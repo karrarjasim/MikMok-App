@@ -142,7 +142,7 @@
         app:tint="@color/white" />
 
     <TextView
-        android:id="@+id/label_faverot"
+        android:id="@+id/likes_label"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"
@@ -153,7 +153,7 @@
         app:layout_constraintEnd_toEndOf="@+id/heart_icon"
         app:layout_constraintStart_toStartOf="@+id/heart_icon"
         app:layout_constraintTop_toBottomOf="@+id/heart_icon"
-        android:text="1910" />
+        tools:text="@string/likes" />
 
     <ImageView
         android:id="@+id/share_icon"
@@ -165,7 +165,7 @@
         android:src="@drawable/ic_arrow"
         app:layout_constraintEnd_toEndOf="@+id/heart_icon"
         app:layout_constraintStart_toStartOf="@+id/heart_icon"
-        app:layout_constraintTop_toBottomOf="@+id/label_faverot"
+        app:layout_constraintTop_toBottomOf="@+id/likes_label"
         app:tint="@color/white" />
 
     <TextView
