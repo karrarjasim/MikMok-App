@@ -6,5 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/recycler_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lav_pause_resume_video"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:visibility="invisible"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="false"
+        app:layout_constraintTop_toTopOf="@id/recycler_home"
+        app:layout_constraintBottom_toBottomOf="@id/recycler_home"
+        app:layout_constraintStart_toStartOf="@id/recycler_home"
+        app:layout_constraintEnd_toEndOf="@id/recycler_home"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
