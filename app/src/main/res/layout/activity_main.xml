@@ -7,7 +7,7 @@
     tools:context=".ui.MainActivity">
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/recycler_home"
+        android:id="@+id/viewpager_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -24,9 +24,9 @@
         android:visibility="invisible"
         app:lottie_autoPlay="false"
         app:lottie_loop="false"
-        app:layout_constraintTop_toTopOf="@id/recycler_home"
-        app:layout_constraintBottom_toBottomOf="@id/recycler_home"
-        app:layout_constraintStart_toStartOf="@id/recycler_home"
-        app:layout_constraintEnd_toEndOf="@id/recycler_home"/>
+        app:layout_constraintTop_toTopOf="@id/viewpager_home"
+        app:layout_constraintBottom_toBottomOf="@id/viewpager_home"
+        app:layout_constraintStart_toStartOf="@id/viewpager_home"
+        app:layout_constraintEnd_toEndOf="@id/viewpager_home"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.example.mikmok.util
+package com.example.mikmok.interfaces
 
 
 interface OnIconsClickListener {
